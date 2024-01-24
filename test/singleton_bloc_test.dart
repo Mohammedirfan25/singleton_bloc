@@ -53,6 +53,12 @@ void main() {
 
       expect(bloc.state, isA<SingletonLoadedState>());
     });
+
+    test("The currentState should be equal to state.current", () {
+      bloc.emitLoadedState();
+
+      expect(bloc.currentState, bloc.state.current);
+    });
   });
 
   group("SingletonBloc Test Cases", () {
@@ -98,6 +104,12 @@ void main() {
       bloc.emitStateChanged();
 
       expectLater(bloc.stream, emits(isA<SingletonLoadedState>()));
+    });
+
+    test("The currentState should be equal to state.current", () {
+      bloc.emitLoadedState();
+
+      expect(bloc.currentState, bloc.state.current);
     });
   });
 }

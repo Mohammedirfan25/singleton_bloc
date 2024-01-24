@@ -27,6 +27,8 @@ class SingletonBloc<T> extends Bloc<SingletonEvent, SingletonState<T>> {
     close();
   }
 
+  T get currentState => state.current;
+
   /// Gets a new state based on the current state
   /// When we emit() state, it will not trigger emit() if the object is same
   /// So wrap the object into singleton state object and crete a new object
@@ -36,17 +38,17 @@ class SingletonBloc<T> extends Bloc<SingletonEvent, SingletonState<T>> {
     //Gets a new state
 
     if (state is SingletonLoadingState) {
-      return SingletonLoadingState(state.current,
+      return SingletonLoadingState(currentState,
           loadingStatus: (state as SingletonLoadingState).loadingStatus);
     } else if (state is SingletonLoadedState) {
-      return SingletonLoadedState(state.current);
+      return SingletonLoadedState(currentState);
     } else if (state is SingletonFailureState) {
       var errState = state as SingletonFailureState;
-      return SingletonFailureState(state.current, errState.failureMessage,
+      return SingletonFailureState(currentState, errState.failureMessage,
           errors: errState.errors);
     } else {
       //Normal State
-      return SingletonState(state.current);
+      return SingletonState(currentState);
     }
   }
 
