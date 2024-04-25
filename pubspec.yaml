@@ -1,10 +1,10 @@
 name: singleton_bloc
 description: "A Wrapper for the traditional bloc pattern with single state."
-version: 0.0.1
+version: 0.1.1
 homepage: https://github.com/Mohammedirfan25/singleton_bloc.git
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: ">=3.2.4 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
